@@ -73,41 +73,29 @@
     </div>
     <script>
     function createTag(name) {
-      // create container div
         const container = document.createElement('div');
         container.classList.add('name-tag');
-      // set innerHTML to name
         container.innerHTML = name;
-      // create delete icon
         const deleteIcon = document.createElement('img');
         deleteIcon.src = 'close.png' ;
         deleteIcon.classList.add('delete-icon');
-      // append delete icon to container
         container.appendChild(deleteIcon);
-      // return container
         return container;
     }
 
     function generateName() {
-      // get name from input field
         const name = document.getElementById('name-input').value;
-      // create tag for name
         const tag = createTag(name);
-      // set random background color
       tag.style.backgroundColor = `hsl(${Math.random() * 360}, 50%, 50%)`;
-      // append tag to name-tags section
         document.getElementById('name-tags').appendChild(tag);
     }
 
     function deleteTag(tag) {
-      // remove tag from DOM
         tag.parentNode.removeChild(tag);
     }
     
-    // add event listener to generate button
     document.getElementById('generate-button').addEventListener('click', generateName);
     
-    // add event listener to clear button
     document.getElementById('clear-button').addEventListener('click', () => {
         const nameTags = document.getElementById('name-tags');
         while (nameTags.firstChild) {
